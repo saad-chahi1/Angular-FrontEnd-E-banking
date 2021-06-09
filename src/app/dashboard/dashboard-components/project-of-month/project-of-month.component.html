@@ -3,17 +3,9 @@
     <div class="d-md-flex align-items-center">
       <div>
         <h4 class="card-title">
-          Projects of the Month
+          Votre Transactions
         </h4>
-        <h6 class="card-subtitle">Monthly Sales of 2020</h6>
-      </div>
-      <div class="ml-auto">
-        <select class="custom-select b-0">
-          <option selected="">January 2020</option>
-          <option value="1">February 2020</option>
-          <option value="2">March 2020</option>
-          <option value="3">April 2020</option>
-        </select>
+        <h6 class="card-subtitle">Les dérniers cinq transactions faissé sur votre compte</h6>
       </div>
     </div>
 
@@ -23,16 +15,13 @@
       <thead>
         <tr>
           <th class="border-top-0 font-medium border-bottom-0">Products</th>
-          <th class="border-top-0 font-medium border-bottom-0">License</th>
-          <th class="border-top-0 font-medium border-bottom-0">Support Agent</th>
-          <th class="border-top-0 font-medium border-bottom-0">Technology</th>
-          <th class="border-top-0 font-medium border-bottom-0">Tickets</th>
-          <th class="border-top-0 font-medium border-bottom-0">Sales</th>
-          <th class="border-top-0 font-medium border-bottom-0">Earnings</th>
+          <th class="border-top-0 font-medium border-bottom-0">Date</th>
+          <th class="border-top-0 font-medium border-bottom-0">Heure</th>
+          <th class="border-top-0 font-medium border-bottom-0">Type</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor='let ts of topSelling'>
+        <tr *ngFor='let ts of myArrayTransaction; index as i'>
           <td>
             <div class="d-flex align-items-center">
               <div class="m-r-10">
@@ -43,16 +32,12 @@
               </div>
             </div>
           </td>
-          <td>{{ts.licene}}</td>
-          <td>{{ts.agent}}</td>
+          <td>{{ts.date_transaction}}</td>
+          <td>{{ts.heure_transaction}}</td>
           <td>
-            <label class="label {{ts.technologyClass}}">{{ts.technology}}</label>
+            {{ts.type_transaction}}
           </td>
-          <td>{{ts.tickets}}</td>
-          <td>{{ts.sales}}</td>
-          <td>
-            <h5 class="m-b-0">${{ts.earning}}</h5>
-          </td>
+          
         </tr>
       </tbody>
     </table>

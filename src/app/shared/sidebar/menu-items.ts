@@ -50,22 +50,6 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
-    path: '/component/rating',
-    title: 'Ratings',
-    icon: 'mdi mdi-bandcamp',
-    class: '',
-    extralink: false,
-    submenu: []
-  },
-  {
-    path: '/component/tabs',
-    title: 'Tabs',
-    icon: 'mdi mdi-sort-variant',
-    class: '',
-    extralink: false,
-    submenu: []
-  },
-  {
     path: '/component/card',
     title: 'Log Out',
     icon: 'mdi mdi-backburger',

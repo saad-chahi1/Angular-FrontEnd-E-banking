@@ -38,6 +38,11 @@ export class DashboardClientService {
     this.http.get('http://localhost:8080/spring-crm-rest/api/users/id', { params: params }).subscribe(data => {this.id = data;});
     return this.http.get<MyTransaction>('http://localhost:8080/spring-crm-rest/api/transactions/'+this.id);
   }
+  getTheLastTransactions(){
+    let params = new HttpParams().set('_search', this.getLoggedinUser());
+    this.http.get('http://localhost:8080/spring-crm-rest/api/users/id', { params: params }).subscribe(data => {this.id = data;});
+    return this.http.get<MyTransaction>('http://localhost:8080/spring-crm-rest/api/lastTransactions/'+this.id);
+  }
   authenticationService(username: string, password: String) {
     return this.http.get('http://localhost:8080/spring-crm-rest/basicauth',
       { headers: { authorization: this.createBasicAuthToken(username, password) } }).pipe(map((res) => {
