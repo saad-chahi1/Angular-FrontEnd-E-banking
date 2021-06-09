@@ -1,60 +1,135 @@
 <div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                <h3 class="card-title">Basic Alert</h3>
-                <h6 class="card-subtitle">This is basic alert</h6>
-                <ngb-alert [dismissible]="false">
-                    <strong>Warning!</strong> Better check yourself, you're not looking too good.
-                  </ngb-alert>
-  					
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <h3 class="card-title">Closeable Alert</h3>
-                <h6 class="card-subtitle">This is closeable alert</h6>
-                <p *ngFor="let alert of alerts">
-                  <ngb-alert [type]="alert.type" (close)="closeAlert(alert)">{{ alert.message }}</ngb-alert>
-                </p>
-                <p>
-                  <button type="button" class="btn btn-primary" (click)="reset()">Reset</button>
-                </p>
-  					
-            </div>
-        </div>
+	<div class="col-12">
+		<div class="card">
+			<div class="card-body">
+				<h3 class="card-title">Recharge</h3>
+				<h6 class="card-subtitle">faite vous recherge téléphonique</h6>
+				<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+					<ngb-panel>
+						<ng-template ngbPanelTitle>
+							<span>&#9733; <b>Inwi</b></span>
+						</ng-template>
+						<ng-template ngbPanelContent>
+							<form id="billing" class="form-horizontal" method="post" action="#" role="form">
+                
+                <div class="form-group row">
+                  <label class="col-sm-3 control-label">Votre N° Tél :</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" placeholder="N° Tél">
+                  </div>
+                </div>
+                
+                <div class="form-group row">
+                  <label class="col-sm-3 control-label">Montant :</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" placeholder="Le montant en DH">
+                    
+                  </div>
+                </div>
+                          <br>
+                <div class="action-wrapper text-center">
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </form>
+						</ng-template>
+					</ngb-panel>
+					<ngb-panel>
+						<ng-template ngbPanelTitle>
+							<span>&#9733; <b>Maroc Télécom</b></span>
+						</ng-template>
+						<ng-template ngbPanelContent>
+							<form id="billing" class="form-horizontal" method="post" action="#" role="form">
+                
+                <div class="form-group row">
+                  <label class="col-sm-3 control-label">Votre N° Tél :</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" placeholder="N° Tél">
+                  </div>
+                </div>
+                
+                <div class="form-group row">
+                  <label class="col-sm-3 control-label">Montant :</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" placeholder="Le montant en DH">
+                    
+                  </div>
+                </div>
+                          <br>
+                <div class="action-wrapper text-center">
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </form>
+						</ng-template>
+					</ngb-panel>
+					<ngb-panel>
+						<ng-template ngbPanelTitle>
+							<span>&#9733; <b>Orange</b></span>
+						</ng-template>
+						<ng-template ngbPanelContent>
+							<form id="billing" class="form-horizontal" method="post" action="#" role="form">
+                
+                <div class="form-group row">
+                  <label class="col-sm-3 control-label">Votre N° Tél :</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" placeholder="N° Tél">
+                  </div>
+                </div>
+                
+                <div class="form-group row">
+                  <label class="col-sm-3 control-label">Montant :</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" placeholder="Le montant en DH">
+                    
+                  </div>
+                </div>
+                          <br>
+                <div class="action-wrapper text-center">
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </form>
+						</ng-template>
+					</ngb-panel>
+				</ngb-accordion>
 
-        <div class="card">
-            <div class="card-body">
-                <h3 class="card-title">Self Closing  Alert</h3>
-                <h6 class="card-subtitle">Static self-closing alert that disappears after 20 seconds (refresh the page if it has already disappeared)</h6>
-                <ngb-alert *ngIf="!staticAlertClosed" (close)="staticAlertClosed = true">Check out our awesome new features!</ngb-alert>
-  				<p>Show a self-closing success message that disappears after 5 seconds.</p>
-  				<ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = null">{{ successMessage }}</ngb-alert>	
-  				<p>
-				  <button class="btn btn-primary" (click)="changeSuccessMessage()">Change message</button>
-				</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-body">
-                <h3 class="card-title">Custom Alert</h3>
-                <p>
-                  <ngb-alert type="custom" [dismissible]="false"><strong>Whoa!</strong> This is a custom alert.</ngb-alert>
-                </p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-body">
-                <h3 class="card-title">Global Configuration of Alert</h3>
-                <p>
-                  <ngb-alert>
-                    This alert's type is success and it's not dismissible because the config has been customized
-                  </ngb-alert>
-                </p>
-            </div>
+			</div>
         </div>
     </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+      <div class="card">
+          <div class="card-body">
+            <div class="billing">
+              <div class="secure text-center margin-bottom-md">
+                <h3 class="margin-bottom-md text-success">
+                    <span class="fs1 icon" aria-hidden="true" data-icon=""></span>
+                    Paye votre facture téléphonique<br>
+                  </h3>
+              </div>
+                      <br>
+                      <br>
+              <form id="billing" class="form-horizontal" method="post" action="#" role="form">
+                <div class="form-group row">
+                  <label class="col-sm-3 control-label">N° de Facture :</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" placeholder="••••  ••••  ••••  ••••">						
+                  </div>
+                </div>
+                
+                <div class="form-group row">
+                  <label class="col-sm-3 control-label">Montant :</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" placeholder="Le montant en DH">
+                    
+                  </div>
+                </div>
+                          <br>
+                          <div class="action-wrapper text-center">
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                          </div>
+              </form>
+            </div>
+      </div>
+      </div>
+  </div>
 </div>

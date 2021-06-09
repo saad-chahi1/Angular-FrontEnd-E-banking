@@ -19,7 +19,7 @@ export const ROUTES: RouteInfo[] = [
   },
   {
     path: '',
-    title: 'UI Components',
+    title: 'Transactions',
     icon: 'mdi mdi-dots-horizontal',
     class: 'nav-small-cap',
     extralink: true,
@@ -27,7 +27,7 @@ export const ROUTES: RouteInfo[] = [
   },
   {
     path: '/component/accordion',
-    title: 'Accordion',
+    title: 'Paiement',
     icon: 'mdi mdi-equal',
     class: '',
     extralink: false,
@@ -35,32 +35,8 @@ export const ROUTES: RouteInfo[] = [
   },
   {
     path: '/component/alert',
-    title: 'Alert',
+    title: 'Recharge',
     icon: 'mdi mdi-message-bulleted',
-    class: '',
-    extralink: false,
-    submenu: []
-  },
-  {
-    path: '/component/carousel',
-    title: 'Carousel',
-    icon: 'mdi mdi-view-carousel',
-    class: '',
-    extralink: false,
-    submenu: []
-  },
-  {
-    path: '/component/dropdown',
-    title: 'Dropdown',
-    icon: 'mdi mdi-arrange-bring-to-front',
-    class: '',
-    extralink: false,
-    submenu: []
-  },
-  {
-    path: '/component/modal',
-    title: 'Modal',
-    icon: 'mdi mdi-tablet',
     class: '',
     extralink: false,
     submenu: []
@@ -68,23 +44,7 @@ export const ROUTES: RouteInfo[] = [
   {
     path: '/component/pagination',
     title: 'Virement',
-    icon: 'mdi mdi-backburger',
-    class: '',
-    extralink: false,
-    submenu: []
-  },
-  {
-    path: '/component/poptool',
-    title: 'Popover & Tooltip',
-    icon: 'mdi mdi-image-filter-vintage',
-    class: '',
-    extralink: false,
-    submenu: []
-  },
-  {
-    path: '/component/progressbar',
-    title: 'Progressbar',
-    icon: 'mdi mdi-poll',
+    icon: 'mdi mdi-view-carousel',
     class: '',
     extralink: false,
     submenu: []
@@ -106,25 +66,9 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
-    path: '/component/timepicker',
-    title: 'Timepicker',
-    icon: 'mdi mdi-calendar-clock',
-    class: '',
-    extralink: false,
-    submenu: []
-  },
-  {
-    path: '/component/buttons',
-    title: 'Button',
-    icon: 'mdi mdi-blur-radial',
-    class: '',
-    extralink: false,
-    submenu: []
-  },
-  {
     path: '/component/card',
-    title: 'Card',
-    icon: 'mdi mdi-arrange-bring-forward',
+    title: 'Log Out',
+    icon: 'mdi mdi-backburger',
     class: '',
     extralink: false,
     submenu: []

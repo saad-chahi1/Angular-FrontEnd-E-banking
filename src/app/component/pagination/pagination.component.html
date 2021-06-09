@@ -1,77 +1,54 @@
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
         <div class="card">
             <div class="card-body">
-                <h3 class="card-title">Default pagination</h3>
-                <h6 class="card-subtitle">This is basic Default pagination</h6>
-                <ngb-pagination [collectionSize]="70" [(page)]="page" aria-label="Default pagination"></ngb-pagination>
-
-				<div>directionLinks = false</div>
-				<ngb-pagination [collectionSize]="70" [(page)]="page" [directionLinks]="false"></ngb-pagination>
-
-				<div>boundaryLinks = true</div>
-				<ngb-pagination [collectionSize]="70" [(page)]="page" [boundaryLinks]="true"></ngb-pagination>
-
-				<hr>
-
-				<pre>Current page: {{page}}</pre>
-  			</div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <h3 class="card-title">Advanced pagination</h3>
-                <h6 class="card-subtitle">This is Advanced pagination</h6>
-                <div>maxSize = 5, rotate = false</div>
-                <ngb-pagination [collectionSize]="120" [(page)]="page2" [maxSize]="5" [boundaryLinks]="true"></ngb-pagination>
-
-				<div>maxSize = 5, rotate = true</div>
-				<ngb-pagination [collectionSize]="120" [(page)]="page2" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
-
-				<div>maxSize = 5, rotate = true, ellipses = false</div>
-				<ngb-pagination [collectionSize]="120" [(page)]="page2" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
-
-				<hr>
-
-				<pre>Current page: {{page2}}</pre>
-  			</div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <h3 class="card-title">Pagination size</h3>
-                <h6 class="card-subtitle">This is Pagination size</h6>
-                <ngb-pagination [collectionSize]="50" [(page)]="currentPage" size="lg"></ngb-pagination>
-				<ngb-pagination [collectionSize]="50" [(page)]="currentPage"></ngb-pagination>
-				<ngb-pagination [collectionSize]="50" [(page)]="currentPage" size="sm"></ngb-pagination>
-  			</div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <h3 class="card-title">Pagination Alignment</h3>
-                <h6 class="card-subtitle">Change the alignment of pagination components with flexbox utilities.</h6>
-                <ngb-pagination class="d-flex justify-content-start" [collectionSize]="70" [(page)]="page"></ngb-pagination>
-                <ngb-pagination class="d-flex justify-content-center" [collectionSize]="70" [(page)]="page"></ngb-pagination>
-                <ngb-pagination class="d-flex justify-content-end" [collectionSize]="70" [(page)]="page"></ngb-pagination>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <h3 class="card-title">Disabled pagination</h3>
-                <h6 class="card-subtitle">This is Disabled pagination</h6>
-                <p>Pagination control can be disabled:</p>
-				<ngb-pagination [collectionSize]="70" [(page)]="disablepage" [disabled]='isDisabled'></ngb-pagination>
-				<hr>
-				<button class="btn btn-sm btn-outline-primary" (click)="toggleDisabled()">
-				  Toggle disabled
-				</button>
+        			<div class="billing">
+        				<div class="secure text-center margin-bottom-md">
+        					<h3 class="margin-bottom-md text-success">
+        							<span class="fs1 icon" aria-hidden="true" data-icon=""></span>
+        							Secure credit card payment<br>
+        							<small>This is a secure 128-bit SSL encrypted payment</small>
+        						</h3>
+        				</div>
+                        <br>
+                        <br>
+        				<form id="billing" class="form-horizontal" method="post" action="#" role="form">
+        					<div class="form-group row">
+        						<label class="col-sm-3 control-label">N° de cart de bénificaire :</label>
+        						<div class="col-sm-8">
+        							<input type="text" class="form-control" placeholder="••••  ••••  ••••  ••••">						
+        						</div>
+        					</div>
+        					<div class="form-group row">
+        						<label class="col-sm-3 control-label">Le Nom de bénificaire :</label>
+        						<div class="col-sm-8">
+        							<input type="text" class="form-control" placeholder="Le Nom">
+        						</div>
+        					</div>
+        					
+        					<div class="form-group row">
+        						<label class="col-sm-3 control-label">Montant :</label>
+        						<div class="col-sm-8">
+        							<input type="text" class="form-control" placeholder="Le montant en DH">
+        							
+        						</div>
+        					</div>
+                            <br>
+        					<div class="action-wrapper text-center">
+        						<h4 class="notes margin-bottom-sm">
+        								You'll be charged <span class="text-stronger">$99/year</span> 
+        							</h4>
+        						<div class="action-btn">
+        							<button class="btn btn-success btn-lg">
+        								Make Payment
+        								<i class="fa fa-chevron-right"></i>
+        							</button>
+        						</div>
+        					</div>
+        				</form>
+        			</div>
   			</div>
         </div>
     </div>
 </div>
+<br>
