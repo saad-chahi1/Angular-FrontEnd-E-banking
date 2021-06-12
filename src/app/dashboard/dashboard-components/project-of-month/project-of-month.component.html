@@ -3,9 +3,9 @@
     <div class="d-md-flex align-items-center">
       <div>
         <h4 class="card-title">
-          Votre Transactions
+          Vos Transactions :
         </h4>
-        <h6 class="card-subtitle">Les dérniers cinq transactions faissé sur votre compte</h6>
+        <h6 class="card-subtitle">Les dernières transactions faites sur votre compte</h6>
       </div>
     </div>
 
@@ -14,7 +14,7 @@
     <table class="table v-middle mb-0">
       <thead>
         <tr>
-          <th class="border-top-0 font-medium border-bottom-0">Products</th>
+          
           <th class="border-top-0 font-medium border-bottom-0">Date</th>
           <th class="border-top-0 font-medium border-bottom-0">Heure</th>
           <th class="border-top-0 font-medium border-bottom-0">Type</th>
@@ -22,16 +22,7 @@
       </thead>
       <tbody>
         <tr *ngFor='let ts of myArrayTransaction; index as i'>
-          <td>
-            <div class="d-flex align-items-center">
-              <div class="m-r-10">
-                <a class="btn btn-circle {{ts.productClass}} text-white"> {{ts.productInitial}}</a>
-              </div>
-              <div class="">
-                <h4 class="m-b-0 font-16">{{ts.productName}}</h4>
-              </div>
-            </div>
-          </td>
+          
           <td>{{ts.date_transaction}}</td>
           <td>{{ts.heure_transaction}}</td>
           <td>

@@ -4,6 +4,9 @@ import { MyClient } from '../models/my-client';
 import { MyCompte } from '../models/my-compte';
 import { MyTransaction } from '../models/my-transaction';
 import { map } from 'rxjs/operators';
+import { forkJoin } from 'rxjs/internal/observable/forkJoin';
+import { MyCommande } from '../models/my-commande';
+import { MyVirement } from '../models/my-virement';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +14,12 @@ import { map } from 'rxjs/operators';
 export class DashboardClientService {
    // BASE_PATH: 'http://localhost:8080'
    USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser'
+   USER_NAME_SESSION_ATTRIBUTE_ID = 'authenticated'
+   USER_NAME_SESSION_ATTRIBUTE_MP = 'root'
+   
 
-   public username: String ="";
-   public password: String="" ;
+   public username: String =this.getLoggedInUserName();
+   public password: String=this.getLoggedInUserMP() ;
    greeting : any;
    id : any ;
 
@@ -21,7 +27,10 @@ export class DashboardClientService {
 
   getIdUser(){
     let params = new HttpParams().set('_search', this.getLoggedinUser());
-    return this.http.get('http://localhost:8080/spring-crm-rest/api/users/id', { params: params });
+    this.http.get('http://localhost:8080/spring-crm-rest/api/users/id', { params: params }).subscribe(data => {this.id = data;});   
+      sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_ID, this.id);  
+
+     
   }
 
   getAll(){
@@ -29,26 +38,20 @@ export class DashboardClientService {
     return this.http.get<MyClient>('http://localhost:8080/spring-crm-rest/api/clients/id', { params: params });
   }
   getAllComptes(){
-    let params = new HttpParams().set('_search', this.getLoggedinUser());
-    this.http.get('http://localhost:8080/spring-crm-rest/api/users/id', { params: params }).subscribe(data => {this.id = data;});
-    return this.http.get<MyCompte>('http://localhost:8080/spring-crm-rest/api/comptes/'+this.id);
+    return this.http.get<MyCompte>('http://localhost:8080/spring-crm-rest/api/comptes/'+this.getLoggedinUserID());
   }
   getAllTransactions(){
-    let params = new HttpParams().set('_search', this.getLoggedinUser());
-    this.http.get('http://localhost:8080/spring-crm-rest/api/users/id', { params: params }).subscribe(data => {this.id = data;});
-    return this.http.get<MyTransaction>('http://localhost:8080/spring-crm-rest/api/transactions/'+this.id);
+    return this.http.get<MyTransaction>('http://localhost:8080/spring-crm-rest/api/transaction/'+this.getLoggedinUserID());
   }
   getTheLastTransactions(){
-    let params = new HttpParams().set('_search', this.getLoggedinUser());
-    this.http.get('http://localhost:8080/spring-crm-rest/api/users/id', { params: params }).subscribe(data => {this.id = data;});
-    return this.http.get<MyTransaction>('http://localhost:8080/spring-crm-rest/api/lastTransactions/'+this.id);
+    return this.http.get<MyTransaction>('http://localhost:8080/spring-crm-rest/api/lastTransactions/'+this.getLoggedinUserID());
   }
-  authenticationService(username: string, password: String) {
+  authenticationService(username: string, password: string) {
     return this.http.get('http://localhost:8080/spring-crm-rest/basicauth',
       { headers: { authorization: this.createBasicAuthToken(username, password) } }).pipe(map((res) => {
         this.username = username;
         this.password = password;
-        this.registerSuccessfulLogin(username);
+        this.registerSuccessfulLogin(username, password);
       }));
   }
 
@@ -56,12 +59,15 @@ export class DashboardClientService {
     return 'Basic ' + window.btoa(username + ":" + password)
   }
 
-  registerSuccessfulLogin(username: string) {
+  registerSuccessfulLogin(username: string, password: string) {
     sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, username)
+    sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_MP, password)
   }
 
   logout() {
     sessionStorage.removeItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
+    sessionStorage.removeItem(this.USER_NAME_SESSION_ATTRIBUTE_ID);
+    sessionStorage.removeItem(this.USER_NAME_SESSION_ATTRIBUTE_MP);
     this.username = "";
     this.password = "";
   }
@@ -76,10 +82,26 @@ export class DashboardClientService {
 		if (user === null) return ''
 		return user
 	}
+  getLoggedinUserID() {
+		let user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_ID)
+		if (user === null) return ''
+		return user
+	}
 
   getLoggedInUserName() {
     let user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME)
     if (user === null) return ''
     return user
+  }
+  getLoggedInUserMP() {
+    let user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_MP)
+    if (user === null) return ''
+    return user
+  }
+  postData(commande : any){
+    return this.http.post<MyCommande>('http://localhost:8080/spring-crm-rest/api/paiments/'+this.getLoggedinUserID(),commande);
+  }
+  postDataVirement(commande : any){
+    return this.http.post<MyVirement>('http://localhost:8080/spring-crm-rest/api/virements/'+this.getLoggedinUserID(),commande);
   }
 }

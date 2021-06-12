@@ -15,11 +15,16 @@ export class LoginComponent implements OnInit {
   successMessage: string="";
   invalidLogin = false;
   loginSuccess = false;
+  isLoggedin = false;
   
   constructor(private route: ActivatedRoute,
     private router: Router,private service:DashboardClientService) { }
 
   ngOnInit(): void {
+    this.isLoggedin = this.service.isUserLoggedIn();
+		if(this.isLoggedin) {
+			this.router.navigateByUrl('/dashboard');
+		}
    
   }
 
@@ -28,7 +33,10 @@ export class LoginComponent implements OnInit {
       this.invalidLogin = false;
       this.loginSuccess = true;
       this.successMessage = 'Login Successful.';
-      this.router.navigate(['/dashboard']);
+      this.service.registerSuccessfulLogin(this.username, this.password);
+      this.service.getIdUser();
+      this.router.navigate(['component/accordion']);
+      
     }, () => {
       this.invalidLogin = true;
       this.loginSuccess = false;

@@ -21,6 +21,7 @@ export class NgbdAccordionBasicComponent {
   ngOnInit(): void {
     this.isLoggedin = this.authService.isUserLoggedIn();
 		this.loggedinUser = this.authService.getLoggedinUser();
+    this.authService.getIdUser();
 
 		if(!this.isLoggedin) {
 			this.router.navigateByUrl('login');

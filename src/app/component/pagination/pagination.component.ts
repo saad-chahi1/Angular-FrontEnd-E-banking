@@ -17,6 +17,11 @@ export class NgbdpaginationBasicComponent {
   isLoggedin = false;
 	
 	loggedinUser: string = '';
+  Commande : any={
+    montant_virement : '',
+    num_source : '',
+    num_destin : ''
+  };
 
   ngOnInit(): void {
     this.isLoggedin = this.authService.isUserLoggedIn();
@@ -25,6 +30,21 @@ export class NgbdpaginationBasicComponent {
 		if(!this.isLoggedin) {
 			this.router.navigateByUrl('login');
 		}
+    this.getCompte();
 
+  }
+  
+  myArray : any = [];
+  postCommande(){
+    this.authService.postDataVirement(this.Commande)
+    .subscribe((myVariable)=>{
+      this.myArray = [myVariable, ...this.myArray]
+    })
+  }
+  myArrayCompte : any = '';
+
+  getCompte(){
+    this.myCompte.getAllComptes()
+    .subscribe(data => {this.myArrayCompte = data;});
   }
 }

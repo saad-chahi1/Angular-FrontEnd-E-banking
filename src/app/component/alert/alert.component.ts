@@ -26,6 +26,10 @@ export class NgbdAlertBasicComponent implements OnInit {
   isLoggedin = false;
 	
 	loggedinUser: string = '';
+  Commande : any={
+    code_facture:'',
+    montant_payment:''
+  };
 
   ngOnInit(): void {
     this.isLoggedin = this.authService.isUserLoggedIn();
@@ -35,6 +39,13 @@ export class NgbdAlertBasicComponent implements OnInit {
 			this.router.navigateByUrl('login');
 		}
 
+  }
+  myArray : any = [];
+  postCommande(){
+    this.authService.postData(this.Commande)
+    .subscribe((myVariable)=>{
+      this.myArray = [myVariable, ...this.myArray]
+    })
   }
 
   

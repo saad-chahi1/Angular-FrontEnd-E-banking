@@ -27,18 +27,19 @@ export class ProfileComponent implements OnInit {
 
 
   ngOnInit(): void {
+    
     this.getCommande();
     this.getCompte();
 
     this.isLoggedin = this.authService.isUserLoggedIn();
 		this.loggedinUser = this.authService.getLoggedinUser();
     this.myuser = this.myUser.getLoggedinUser();
-
 		if(!this.isLoggedin) {
 			this.router.navigateByUrl('login');
 		}
 
 		this.myClient.getAll().subscribe(data => this.greeting = data);
+    
   }
   getCommande(){
     this.myClient.getAll()
@@ -48,6 +49,7 @@ export class ProfileComponent implements OnInit {
     this.myCompte.getAllComptes()
     .subscribe(data => {this.myArrayCompte = data;});
   }
+  ngAfterViewInit() {}
   
 
 }
